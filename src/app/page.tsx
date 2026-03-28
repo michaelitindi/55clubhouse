@@ -105,9 +105,9 @@ export default function Home() {
               <span className="manrope text-xs uppercase font-extrabold text-secondary tracking-[0.3em] mb-4 block">The Collection</span>
               <h2 className="noto-serif text-4xl md:text-5xl font-bold text-primary leading-tight">Featured Golf Communities</h2>
             </div>
-            <button className="text-primary font-bold manrope border-b-2 border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors">
+            <Link href="/discover" className="text-primary font-bold manrope border-b-2 border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors">
               View All Estates
-            </button>
+            </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             {/* Large Featured Card */}
@@ -236,19 +236,19 @@ export default function Home() {
       
       {/* Mobile Bottom Navigation */}
       <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 md:hidden bg-white/90 backdrop-blur-xl shadow-[0px_-10px_30px_rgba(22,29,27,0.04)] rounded-t-3xl border-t border-outline-variant/15">
-        <Link href="/" className="flex flex-col items-center justify-center text-primary bg-surface-container-low rounded-xl px-6 py-2">
+        <Link href="/discover" className="flex flex-col items-center justify-center text-primary bg-surface-container-low rounded-xl px-6 py-2">
           <span className="material-symbols-outlined">explore</span>
           <span className="manrope text-[10px] uppercase tracking-widest font-bold mt-1">Explore</span>
         </Link>
-        <Link href="#" className="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity">
+        <Link href="/login" className="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity">
           <span className="material-symbols-outlined">hotel_class</span>
-          <span className="manrope text-[10px] uppercase tracking-widest font-bold mt-1">Saved</span>
+          <span className="manrope text-[10px] uppercase tracking-widest font-bold mt-1">Curated</span>
         </Link>
         <Link href="/matchmaker" className="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity">
           <span className="material-symbols-outlined">handshake</span>
           <span className="manrope text-[10px] uppercase tracking-widest font-bold mt-1">Match</span>
         </Link>
-        <Link href="/profile" className="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity">
+        <Link href="/login" className="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity">
           <span className="material-symbols-outlined">person</span>
           <span className="manrope text-[10px] uppercase tracking-widest font-bold mt-1">Profile</span>
         </Link>
