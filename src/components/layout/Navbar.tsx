@@ -7,24 +7,24 @@ export default function Navbar() {
         55clubhouse
       </Link>
       <nav className="hidden md:flex items-center space-x-10">
-        <Link href="/discover" className="text-secondary font-semibold border-b-2 border-secondary-fixed-dim pb-1 manrope text-sm tracking-wide">
+        <Link href="/discover" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity">
           Discover
         </Link>
-        <Link href="/estates/shadow-creek-reserve" className="text-on-surface-variant font-medium hover:text-primary transition-colors manrope text-sm tracking-wide">
+        <Link href="/estates/shadow-creek-reserve" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity">
           Estates
         </Link>
-        <Link href="/concierge" className="text-on-surface-variant font-medium hover:text-primary transition-colors manrope text-sm tracking-wide">
+        <Link href="/concierge" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity">
           Concierge
         </Link>
-        <Link href="/about" className="text-on-surface-variant font-medium hover:text-primary transition-colors manrope text-sm tracking-wide">
+        <Link href="/about" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity">
           About
         </Link>
       </nav>
       <div className="flex items-center space-x-6">
         <div className="hidden lg:flex items-center bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/15">
-          <span className="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+          <span className="material-symbols-outlined text-primary text-sm mr-2">search</span>
           <input 
-            className="bg-transparent border-none focus:ring-0 text-sm manrope w-32 placeholder:text-on-surface-variant/60" 
+            className="bg-transparent border-none focus:ring-0 text-sm manrope w-32 placeholder:text-primary/60 text-primary font-medium" 
             placeholder="Find an estate..." 
             type="text"
           />

@@ -8,16 +8,16 @@ export default function Home() {
       <Navbar />
       <main className="pt-24">
         {/* Hero Section */}
-        <section className="relative h-[921px] flex items-center justify-center px-8 mb-24">
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/40 to-primary/10 z-10"></div>
+        <section className="relative min-h-[85vh] flex items-center justify-center px-8 mb-24 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-primary/10 z-10"></div>
             <img 
               alt="Luxury Golf Course Hero" 
               className="w-full h-full object-cover" 
               src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=2070&auto=format&fit=crop" 
             />
           </div>
-          <div className="relative z-20 text-center max-w-4xl mx-auto">
+          <div className="relative z-20 text-center max-w-4xl mx-auto py-12">
             <div className="mb-6 flex justify-center">
               <span className="bg-secondary-fixed-dim text-primary manrope text-[10px] uppercase font-bold tracking-[0.2em] px-4 py-1.5 rounded-full">
                 The Gold Standard of Living
