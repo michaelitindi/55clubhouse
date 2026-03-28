@@ -12,8 +12,8 @@ export default function Navbar() {
         <Link href="/discover" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity flex items-center">
           Discover
         </Link>
-        <Link href="/concierge" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity flex items-center">
-          Concierge
+        <Link href="/consultation" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity flex items-center">
+          Talk to an Expert
         </Link>
         <Link href="/about" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity flex items-center">
           About
@@ -21,7 +21,7 @@ export default function Navbar() {
       </nav>
       <div className="flex items-center space-x-6">
         <Link 
-          href="/concierge" 
+          href="/consultation" 
           className="hidden lg:flex items-center bg-primary text-white px-6 py-2.5 rounded-full font-bold manrope text-sm hover:scale-95 transition-transform"
         >
           Schedule Call

@@ -12,9 +12,9 @@ export default function Footer() {
       <div className="grid grid-cols-2 gap-8">
         <div className="flex flex-col space-y-4">
           <h4 className="manrope text-[10px] uppercase font-bold tracking-widest text-secondary-fixed-dim">Destinations</h4>
-          <Link href="#" className="manrope text-sm text-background/80 hover:text-white transition-all">North America</Link>
-          <Link href="#" className="manrope text-sm text-background/80 hover:text-white transition-all">European Links</Link>
-          <Link href="#" className="manrope text-sm text-background/80 hover:text-white transition-all">Asian Highlands</Link>
+          <Link href="/discover" className="manrope text-sm text-background/80 hover:text-white transition-all">North America</Link>
+          <Link href="/discover" className="manrope text-sm text-background/80 hover:text-white transition-all">European Links</Link>
+          <Link href="/discover" className="manrope text-sm text-background/80 hover:text-white transition-all">Asian Highlands</Link>
         </div>
         <div className="flex flex-col space-y-4">
           <h4 className="manrope text-[10px] uppercase font-bold tracking-widest text-secondary-fixed-dim">Legal</h4>

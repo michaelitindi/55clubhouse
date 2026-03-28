@@ -138,9 +138,9 @@ export default function CommunityDetailPage() {
                     Speak with a Heritage Consultant to receive a personalized community dossier and private tour invitation.
                   </p>
                   <div className="space-y-4">
-                    <button className="w-full bg-secondary-fixed-dim text-primary py-4 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-secondary-container transition-colors">
-                      Consult with an Expert
-                    </button>
+                    <Link href="/consultation" className="block w-full text-center bg-secondary-fixed-dim text-primary py-4 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-secondary-container transition-colors">
+                      Talk to an Expert
+                    </Link>
                     <button className="w-full border border-outline-variant/30 py-4 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-white/5 transition-colors">
                       Download Brochure
                     </button>
