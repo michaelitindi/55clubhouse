@@ -111,7 +111,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             {/* Large Featured Card */}
-            <div className="md:col-span-8 group cursor-pointer">
+            <Link href="/estates/shadow-creek-reserve" className="md:col-span-8 group cursor-pointer">
               <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6">
                 <img 
                   alt="Shadow Creek Reserve" 
@@ -132,10 +132,10 @@ export default function Home() {
                   <p className="manrope text-xs text-on-surface-variant uppercase tracking-widest font-bold">Residences</p>
                 </div>
               </div>
-            </div>
+            </Link>
             {/* Smaller Sidebar Card */}
             <div className="md:col-span-4 flex flex-col gap-8">
-              <div className="group cursor-pointer">
+              <Link href="/estates/the-sanctuary" className="group cursor-pointer">
                 <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
                   <img 
                     alt="The Sanctuary" 
@@ -145,8 +145,8 @@ export default function Home() {
                 </div>
                 <h3 className="noto-serif text-xl font-bold text-primary mb-1">The Sanctuary at Kiawah</h3>
                 <p className="manrope text-sm text-on-surface-variant">Kiawah Island, SC • Oceanfront Greens</p>
-              </div>
-              <div className="group cursor-pointer">
+              </Link>
+              <Link href="/estates/oakmont-estates" className="group cursor-pointer">
                 <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
                   <img 
                     alt="Oakmont Estates" 
@@ -156,11 +156,11 @@ export default function Home() {
                 </div>
                 <h3 className="noto-serif text-xl font-bold text-primary mb-1">Oakmont Estates</h3>
                 <p className="manrope text-sm text-on-surface-variant">Pinehurst, NC • Historic Pinehurst #2 Access</p>
-              </div>
+              </Link>
             </div>
 
             {/* Additional Cards for Asymmetry */}
-            <div className="md:col-span-4 group cursor-pointer pt-12">
+            <Link href="/estates/emerald-links" className="md:col-span-4 group cursor-pointer pt-12">
               <div className="relative aspect-square rounded-2xl overflow-hidden mb-6">
                 <img 
                   alt="Emerald Links" 
@@ -172,8 +172,8 @@ export default function Home() {
                 <h3 className="noto-serif text-2xl font-bold text-primary mb-1">Emerald Links</h3>
                 <p className="manrope text-sm text-on-surface-variant">Jupiter, Florida</p>
               </div>
-            </div>
-            <div className="md:col-span-4 group cursor-pointer">
+            </Link>
+            <Link href="/estates/mountain-oak" className="md:col-span-4 group cursor-pointer">
               <div className="relative aspect-square rounded-2xl overflow-hidden mb-6">
                 <img 
                   alt="Mountain Oak" 
@@ -185,8 +185,8 @@ export default function Home() {
                 <h3 className="noto-serif text-2xl font-bold text-primary mb-1">Mountain Oak</h3>
                 <p className="manrope text-sm text-on-surface-variant">Blue Ridge, Georgia</p>
               </div>
-            </div>
-            <div className="md:col-span-8 group cursor-pointer">
+            </Link>
+            <Link href="/estates/coastal-pines" className="md:col-span-8 group cursor-pointer">
               <div className="relative aspect-[21/9] rounded-2xl overflow-hidden mb-6">
                 <img 
                   alt="Coastal Pines" 
@@ -204,7 +204,7 @@ export default function Home() {
                   <p className="manrope text-xs text-on-surface-variant uppercase tracking-widest font-bold">Membership</p>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
 

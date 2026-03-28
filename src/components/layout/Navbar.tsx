@@ -10,7 +10,7 @@ export default function Navbar() {
         <Link href="/discover" className="text-secondary font-semibold border-b-2 border-secondary-fixed-dim pb-1 manrope text-sm tracking-wide">
           Discover
         </Link>
-        <Link href="/estates" className="text-on-surface-variant font-medium hover:text-primary transition-colors manrope text-sm tracking-wide">
+        <Link href="/estates/shadow-creek-reserve" className="text-on-surface-variant font-medium hover:text-primary transition-colors manrope text-sm tracking-wide">
           Estates
         </Link>
         <Link href="/concierge" className="text-on-surface-variant font-medium hover:text-primary transition-colors manrope text-sm tracking-wide">
@@ -30,12 +30,9 @@ export default function Navbar() {
           />
         </div>
         <div className="flex items-center space-x-4">
-          <button className="material-symbols-outlined text-primary cursor-pointer hover:scale-95 transition-transform">
-            notifications
-          </button>
-          <button className="material-symbols-outlined text-primary cursor-pointer hover:scale-95 transition-transform">
+          <Link href="/login" className="material-symbols-outlined text-primary cursor-pointer hover:scale-95 transition-transform">
             account_circle
-          </button>
+          </Link>
         </div>
       </div>
     </header>

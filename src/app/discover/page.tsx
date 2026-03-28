@@ -1,8 +1,10 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Link from "next/link";
 
 const communities = [
   {
+    slug: "verdant-estate",
     name: "Verdant Estate",
     location: "Greenwich, Connecticut",
     price: "$2.5M - $8M",
@@ -11,6 +13,7 @@ const communities = [
     tags: ["Platinum Rated", "PGA Course"],
   },
   {
+    slug: "shadow-creek-reserve",
     name: "Shadow Creek Reserve",
     location: "Scottsdale, Arizona",
     price: "$3.4M - $12M",
@@ -19,6 +22,7 @@ const communities = [
     tags: ["Desert Oasis", "Tom Fazio Design"],
   },
   {
+    slug: "the-sanctuary",
     name: "The Sanctuary at Kiawah",
     location: "Kiawah Island, SC",
     price: "$1.8M - $6.5M",
@@ -27,6 +31,7 @@ const communities = [
     tags: ["Oceanfront", "Nature Preserve"],
   },
   {
+    slug: "oakmont-estates",
     name: "Oakmont Estates",
     location: "Pinehurst, NC",
     price: "$1.2M - $4M",
@@ -111,7 +116,7 @@ export default function DiscoverPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
             {communities.map((community) => (
-              <div key={community.name} className="group cursor-pointer">
+              <Link key={community.name} href={`/estates/${community.slug}`} className="group cursor-pointer">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6">
                   <img 
                     src={community.image} 
@@ -139,7 +144,7 @@ export default function DiscoverPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
