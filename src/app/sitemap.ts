@@ -20,18 +20,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Dynamic estate routes (fetching from Sanity)
-  // Note: This will work once you've added data to Sanity
   let estateRoutes: MetadataRoute.Sitemap = [];
-  try {
-    const slugs = await client.fetch<string[]>(`*[_type == "community"].slug.current`);
-    estateRoutes = slugs.map((slug) => ({
-      url: `${baseUrl}/estates/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    }));
-  } catch (error) {
-    console.error('Error fetching slugs for sitemap:', error);
+  
+  if (client) {
+    try {
+      const slugs = await client.fetch<string[]>(`*[_type == "community"].slug.current`);
+      estateRoutes = slugs.map((slug) => ({
+        url: `${baseUrl}/estates/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      }));
+    } catch (error) {
+      console.error('Error fetching slugs for sitemap:', error);
+    }
+  } else {
+    console.warn('Sanity client not initialized: NEXT_PUBLIC_SANITY_PROJECT_ID is missing.');
   }
 
   return [...staticRoutes, ...estateRoutes];
