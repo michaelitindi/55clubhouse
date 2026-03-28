@@ -56,7 +56,7 @@ export default function Home() {
               src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=2070&auto=format&fit=crop" 
             />
           </div>
-          <div className="relative z-20 text-center max-w-4xl mx-auto pb-48">
+          <div className="relative z-20 text-center max-w-4xl mx-auto py-12">
             <h1 className="noto-serif text-5xl md:text-7xl font-bold text-white mb-8 -tracking-tight leading-tight">
               Where Heritage Meets the Green
             </h1>
@@ -87,7 +87,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Featured Golf Communities (Structured Grid) */}
+        {/* Featured Golf Communities */}
         <section className="max-w-7xl mx-auto px-8 py-24 mb-24">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-xl">
