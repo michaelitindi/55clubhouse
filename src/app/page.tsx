@@ -9,7 +9,7 @@ const featuredCommunities = [
     location: "Scottsdale, Arizona",
     price: "$3.4M - $12M",
     design: "Tom Fazio Signature Design",
-    image: "https://images.unsplash.com/photo-1531415080293-233a33d0ef18?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=2070&auto=format&fit=crop",
     isPlatinum: true,
   },
   {

@@ -12,9 +12,6 @@ export default function Navbar() {
         <Link href="/discover" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity flex items-center">
           Discover
         </Link>
-        <Link href="/discover" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity flex items-center">
-          Estates
-        </Link>
         <Link href="/concierge" className="text-primary font-bold manrope text-sm tracking-wide hover:opacity-70 transition-opacity flex items-center">
           Concierge
         </Link>
