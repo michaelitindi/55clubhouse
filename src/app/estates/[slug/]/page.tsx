@@ -3,6 +3,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import VirtualTourModal from "@/components/shared/VirtualTourModal";
 
@@ -22,13 +23,15 @@ export default function CommunityDetailPage() {
         <section className="mb-12 md:mb-20 -mx-4 md:mx-0">
           <div className="flex flex-col md:flex-row gap-2 md:gap-4 h-[500px] md:h-[600px]">
             <div className="relative w-full md:w-2/3 h-full overflow-hidden md:rounded-2xl group">
-              <img 
+              <Image 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                 src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=2070&auto=format&fit=crop" 
                 alt="Whispering Pines Estates"
+                fill
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8">
+              <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-10">
                 <span className="bg-secondary-fixed-dim text-primary px-3 py-1 rounded-full text-[9px] md:text-[10px] manrope font-bold uppercase tracking-widest mb-3 md:mb-4 inline-block">
                   Platinum Rated
                 </span>
@@ -43,22 +46,26 @@ export default function CommunityDetailPage() {
               </button>
             </div>
             <div className="hidden md:flex flex-col w-1/3 gap-4 h-full">
-              <div className="h-1/2 rounded-2xl overflow-hidden group">
-                <img 
+              <div className="relative h-1/2 rounded-2xl overflow-hidden group">
+                <Image 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                   src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" 
                   alt="Clubhouse Interior"
+                  fill
+                  sizes="33vw"
                 />
               </div>
-              <div className="h-1/2 rounded-2xl overflow-hidden relative group">
-                <img 
+              <div className="relative h-1/2 rounded-2xl overflow-hidden group">
+                <Image 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                   src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=2070&auto=format&fit=crop" 
                   alt="Pool Area"
+                  fill
+                  sizes="33vw"
                 />
                 <div 
                   onClick={() => handleFeatureSoon("Photo Gallery")}
-                  className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                  className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer z-10"
                 >
                   <span className="manrope text-white font-bold tracking-widest uppercase text-xs">View All 42 Photos</span>
                 </div>
@@ -165,11 +172,13 @@ export default function CommunityDetailPage() {
               </div>
               <div className="bg-surface-container-low p-6 rounded-2xl">
                 <h4 className="manrope font-bold text-primary text-[10px] uppercase tracking-widest mb-4">Location</h4>
-                <div className="w-full h-40 md:h-48 rounded-xl overflow-hidden mb-4 grayscale hover:grayscale-0 transition-all duration-500">
-                  <img 
+                <div className="relative w-full h-40 md:h-48 rounded-xl overflow-hidden mb-4 grayscale hover:grayscale-0 transition-all duration-500">
+                  <Image 
                     className="w-full h-full object-cover" 
                     src="https://images.unsplash.com/photo-1524813686514-a57563d77965?q=80&w=2000&auto=format&fit=crop" 
                     alt="Map"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <div className="flex items-center gap-2 text-on-surface-variant">

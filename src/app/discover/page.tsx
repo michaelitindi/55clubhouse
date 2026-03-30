@@ -3,6 +3,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useMemo } from "react";
 
 const allCommunities = [
@@ -91,7 +92,7 @@ export default function DiscoverPage() {
     <>
       <Navbar />
       <main className="pt-24 md:pt-28 pb-20 px-4 md:px-12 max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12">
-        {/* Mobile Filters (Horizontal Chips) */}
+        {/* Mobile Filters */}
         <div className="md:hidden flex flex-col gap-4 sticky top-20 bg-background/95 backdrop-blur-md z-40 py-4 -mx-4 px-4 border-b border-outline-variant/10">
           <div className="flex overflow-x-auto gap-2 no-scrollbar pb-2">
             {regions.map((region) => (
@@ -120,7 +121,7 @@ export default function DiscoverPage() {
           </div>
         </div>
 
-        {/* Sidebar Filters (Desktop) */}
+        {/* Sidebar Filters */}
         <aside className="hidden md:block w-72 flex-shrink-0">
           <div className="sticky top-32 space-y-10">
             <div>
@@ -193,12 +194,14 @@ export default function DiscoverPage() {
             {filteredCommunities.map((community) => (
               <Link key={community.slug} href={`/estates/${community.slug}`} className="group cursor-pointer block">
                 <div className="relative aspect-[16/10] md:aspect-[4/3] rounded-2xl overflow-hidden mb-4 md:mb-6 shadow-sm">
-                  <img 
+                  <Image 
                     src={community.image} 
                     alt={community.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute top-3 left-3 md:top-4 md:left-4 flex gap-2">
+                  <div className="absolute top-3 left-3 md:top-4 md:left-4 flex gap-2 z-10">
                     {community.tags.slice(0, 1).map(tag => (
                       <span key={tag} className="bg-primary/90 text-white manrope text-[8px] md:text-[10px] uppercase font-bold tracking-widest px-2 py-1 md:px-3 md:py-1.5 rounded-full backdrop-blur-sm">
                         {tag}

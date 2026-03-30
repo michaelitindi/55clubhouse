@@ -1,6 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 const featuredCommunities = [
   {
@@ -50,10 +51,12 @@ export default function Home() {
         <section className="relative min-h-[85vh] md:min-h-[95vh] flex items-center justify-center px-6 md:px-8 pb-12 md:pb-24 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-b from-primary/40 to-primary/10 z-10"></div>
-            <img 
+            <Image 
               alt="Luxury Golf Course Hero" 
               className="w-full h-full object-cover" 
               src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=2070&auto=format&fit=crop" 
+              fill
+              priority
             />
           </div>
           <div className="relative z-20 text-center max-w-4xl mx-auto pt-12 md:pt-0">
@@ -95,13 +98,15 @@ export default function Home() {
             {featuredCommunities.map((community) => (
               <Link key={community.slug} href={`/estates/${community.slug}`} className="group cursor-pointer block">
                 <div className="relative aspect-[16/10] rounded-2xl md:rounded-3xl overflow-hidden mb-4 md:mb-6 shadow-sm border border-outline-variant/10">
-                  <img 
+                  <Image 
                     alt={community.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                     src={community.image} 
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   {community.isPlatinum && (
-                    <div className="absolute top-4 left-4 md:top-6 md:left-6">
+                    <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10">
                       <span className="bg-primary/90 text-white manrope text-[9px] md:text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 md:px-4 md:py-2 rounded-full backdrop-blur-sm">Platinum Rated</span>
                     </div>
                   )}
@@ -125,14 +130,16 @@ export default function Home() {
         <section className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 mb-16 md:mb-24 bg-surface-container-low md:rounded-[2rem]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
             <div className="relative px-2 md:px-0">
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
-                <img 
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl relative">
+                <Image 
                   alt="Luxury Expert" 
                   className="w-full h-full object-cover" 
                   src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop" 
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-2 md:-bottom-10 md:-right-10 bg-white p-6 md:p-8 rounded-xl shadow-lg max-w-[240px] md:max-w-xs border border-outline-variant/10">
+              <div className="absolute -bottom-6 -right-2 md:-bottom-10 md:-right-10 bg-white p-6 md:p-8 rounded-xl shadow-lg max-w-[240px] md:max-w-xs border border-outline-variant/10 z-10">
                 <p className="noto-serif text-lg md:text-2xl font-bold text-primary mb-2 italic">"A home is the anchor of your legacy."</p>
                 <p className="manrope text-[10px] md:text-sm text-on-surface-variant">— Julian Vane, Chief Curator</p>
               </div>
@@ -143,7 +150,7 @@ export default function Home() {
               <p className="manrope text-base md:text-lg text-on-surface-variant mb-8 md:mb-10 leading-relaxed">
                 Our curators are lifestyle architects. We provide private consultations to map your passions to the world’s most exclusive golf enclaves.
               </p>
-              <Link href="/consultation" className="inline-block w-full md:w-auto text-center bg-primary text-white px-8 py-4 rounded-xl font-bold manrope hover:opacity-90 transition-opacity shadow-lg">
+              <Link href="/consultation" className="inline-block w-full md:w-auto text-center bg-primary text-white px-8 py-4 rounded-xl font-bold manrope hover:opacity-90 transition-opacity shadow-lg text-sm">
                 Schedule a Call
               </Link>
             </div>
