@@ -72,9 +72,9 @@ export default function Home() {
                   type="text"
                 />
               </div>
-              <button className="bg-primary text-white px-10 py-4 rounded-xl font-bold manrope hover:scale-[0.98] transition-transform flex items-center justify-center m-1">
+              <Link href="/discover" className="bg-primary text-white px-10 py-4 rounded-xl font-bold manrope hover:scale-[0.98] transition-transform flex items-center justify-center m-1">
                 Explore Now
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -127,7 +127,7 @@ export default function Home() {
             <div className="relative px-2 md:px-0">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
                 <img 
-                  alt="Luxury Concierge" 
+                  alt="Luxury Expert" 
                   className="w-full h-full object-cover" 
                   src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop" 
                 />
@@ -143,9 +143,33 @@ export default function Home() {
               <p className="manrope text-base md:text-lg text-on-surface-variant mb-8 md:mb-10 leading-relaxed">
                 Our curators are lifestyle architects. We provide private consultations to map your passions to the world’s most exclusive golf enclaves.
               </p>
-              <button className="w-full md:w-auto bg-primary text-white px-8 py-4 rounded-xl font-bold manrope hover:opacity-90 transition-opacity shadow-lg">
+              <Link href="/consultation" className="inline-block w-full md:w-auto text-center bg-primary text-white px-8 py-4 rounded-xl font-bold manrope hover:opacity-90 transition-opacity shadow-lg">
                 Schedule a Call
-              </button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Matchmaker CTA Section */}
+        <section className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24 mb-32">
+          <div className="bg-primary rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-24 relative overflow-hidden flex flex-col items-center text-center">
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+              <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-secondary-fixed-dim via-transparent to-transparent"></div>
+            </div>
+            <div className="relative z-10 max-w-2xl">
+              <span className="manrope text-xs uppercase font-extrabold text-secondary-fixed-dim tracking-[0.4em] mb-6 block">The Heritage Matchmaker</span>
+              <h2 className="noto-serif text-3xl md:text-6xl font-bold text-white mb-6 md:mb-8 leading-tight">Find Your Perfect Green</h2>
+              <p className="manrope text-base md:text-lg text-white/70 mb-10 md:mb-12">
+                Take our lifestyle assessment. We analyze your handicap and architectural taste to match you with the community that mirrors your soul.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center w-full">
+                <Link href="/matchmaker" className="bg-secondary-fixed-dim text-primary px-10 py-4 md:py-5 rounded-xl font-bold manrope hover:scale-105 transition-transform shadow-xl">
+                  Start Assessment
+                </Link>
+                <Link href="/about" className="border border-white/20 text-white px-10 py-4 md:py-5 rounded-xl font-bold manrope hover:bg-white/10 transition-colors">
+                  How it Works
+                </Link>
+              </div>
             </div>
           </div>
         </section>

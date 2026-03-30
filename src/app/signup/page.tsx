@@ -1,9 +1,23 @@
+'use client';
+
 import Link from "next/link";
+import { useState } from "react";
 
 export default function SignupPage() {
+  const [isCreating, setIsCreating] = useState(false);
+
+  const handleSignup = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsCreating(true);
+    setTimeout(() => {
+      alert("Account created successfully. Welcome to 55clubhouse.");
+      setIsCreating(false);
+    }, 1000);
+  };
+
   return (
     <main className="flex min-h-screen bg-surface">
-      {/* Visual Anchor: High-Quality Imagery Side */}
+      {/* Visual Anchor */}
       <section className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/20 z-10"></div>
         <img 
@@ -32,12 +46,13 @@ export default function SignupPage() {
             <p className="font-body text-on-surface-variant">Join our exclusive community of golf enthusiasts.</p>
           </div>
 
-          <form className="space-y-8">
+          <form className="space-y-8" onSubmit={handleSignup}>
             <div className="space-y-6">
               <div>
                 <label className="font-label text-[10px] uppercase font-bold text-on-surface-variant tracking-widest mb-2 block">Full Name</label>
                 <input 
                   type="text" 
+                  required
                   className="w-full bg-transparent border-b border-outline-variant/40 focus:border-secondary focus:ring-0 px-0 py-3 font-body text-primary transition-all outline-none" 
                   placeholder="John Doe"
                 />
@@ -46,6 +61,7 @@ export default function SignupPage() {
                 <label className="font-label text-[10px] uppercase font-bold text-on-surface-variant tracking-widest mb-2 block">Email Address</label>
                 <input 
                   type="email" 
+                  required
                   className="w-full bg-transparent border-b border-outline-variant/40 focus:border-secondary focus:ring-0 px-0 py-3 font-body text-primary transition-all outline-none" 
                   placeholder="name@email.com"
                 />
@@ -54,14 +70,19 @@ export default function SignupPage() {
                 <label className="font-label text-[10px] uppercase font-bold text-on-surface-variant tracking-widest mb-2 block">Create Password</label>
                 <input 
                   type="password" 
+                  required
                   className="w-full bg-transparent border-b border-outline-variant/40 focus:border-secondary focus:ring-0 px-0 py-3 font-body text-primary transition-all outline-none" 
                   placeholder="••••••••"
                 />
               </div>
             </div>
 
-            <button className="w-full bg-primary text-white py-5 rounded-lg font-bold font-body hover:scale-[0.98] transition-all shadow-xl">
-              Create Account
+            <button 
+              type="submit"
+              disabled={isCreating}
+              className="w-full bg-primary text-white py-5 rounded-lg font-bold font-body hover:scale-[0.98] transition-all shadow-xl disabled:opacity-50"
+            >
+              {isCreating ? "Creating Account..." : "Create Account"}
             </button>
           </form>
 

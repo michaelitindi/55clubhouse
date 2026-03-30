@@ -1,8 +1,14 @@
+'use client';
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
 
 export default function CommunityDetailPage() {
+  const handleFeatureSoon = (feature: string) => {
+    alert(`${feature} is currently being curated for our members. Please check back soon.`);
+  };
+
   return (
     <>
       <Navbar />
@@ -23,6 +29,13 @@ export default function CommunityDetailPage() {
                 </span>
                 <h1 className="noto-serif text-3xl md:text-6xl text-white font-bold -tracking-tight leading-tight">Whispering Pines Estates</h1>
               </div>
+              <button 
+                onClick={() => handleFeatureSoon("Virtual Tour")}
+                className="absolute top-6 right-6 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-white/30 transition-all border border-white/20"
+              >
+                <span className="material-symbols-outlined text-sm">view_in_ar</span>
+                <span className="manrope text-xs font-bold uppercase tracking-wider">Virtual Tour</span>
+              </button>
             </div>
             <div className="hidden md:flex flex-col w-1/3 gap-4 h-full">
               <div className="h-1/2 rounded-2xl overflow-hidden group">
@@ -38,7 +51,10 @@ export default function CommunityDetailPage() {
                   src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=2070&auto=format&fit=crop" 
                   alt="Pool Area"
                 />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                <div 
+                  onClick={() => handleFeatureSoon("Photo Gallery")}
+                  className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                >
                   <span className="manrope text-white font-bold tracking-widest uppercase text-xs">View All 42 Photos</span>
                 </div>
               </div>
@@ -133,7 +149,10 @@ export default function CommunityDetailPage() {
                     <Link href="/consultation" className="block w-full text-center bg-secondary-fixed-dim text-primary py-4 rounded-xl font-bold text-sm tracking-widest uppercase hover:bg-secondary-container transition-colors">
                       Talk to an Expert
                     </Link>
-                    <button className="w-full border border-outline-variant/30 py-4 rounded-xl font-bold text-sm tracking-widest uppercase hover:bg-white/5 transition-colors">
+                    <button 
+                      onClick={() => handleFeatureSoon("Brochure Download")}
+                      className="w-full border border-outline-variant/30 py-4 rounded-xl font-bold text-sm tracking-widest uppercase hover:bg-white/5 transition-colors"
+                    >
                       Download Brochure
                     </button>
                   </div>

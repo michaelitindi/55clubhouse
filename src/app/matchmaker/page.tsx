@@ -3,6 +3,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const steps = [
   { id: 1, label: 'Lifestyle', title: 'Phase 1: Your Lifestyle DNA' },
@@ -12,7 +13,57 @@ const steps = [
 
 export default function MatchmakerPage() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selections, setSelections] = useState({ golf: 'leisure', architecture: 'heritage' });
+  const [selections, setSelections] = useState({ golf: 'leisure', architecture: 'heritage', email: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const router = useRouter();
+
+  const handleNext = () => {
+    if (currentStep < 3) {
+      setCurrentStep(prev => prev + 1);
+      window.scrollTo(0, 0);
+    } else {
+      handleSubmit();
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!selections.email) {
+      alert("Please enter your email to reveal matches.");
+      return;
+    }
+    setIsSubmitting(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      window.scrollTo(0, 0);
+    }, 1500);
+  };
+
+  if (isSubmitted) {
+    return (
+      <>
+        <Navbar />
+        <main className="pt-32 pb-24 px-4 md:px-12 max-w-7xl mx-auto min-h-screen text-center">
+          <div className="max-w-2xl mx-auto bg-surface-container-low p-12 rounded-[2rem] border border-secondary/20">
+            <span className="material-symbols-outlined text-6xl text-secondary mb-6" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+            <h1 className="noto-serif text-4xl font-bold text-primary mb-4">Matches Secured</h1>
+            <p className="manrope text-lg text-on-surface-variant mb-8">
+              We've analyzed your profile. A personalized community dossier has been sent to <span className="font-bold text-primary">{selections.email}</span>.
+            </p>
+            <button 
+              onClick={() => router.push('/discover')}
+              className="bg-primary text-white px-10 py-4 rounded-xl font-bold manrope hover:scale-105 transition-transform"
+            >
+              Browse Featured Estates
+            </button>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
@@ -54,7 +105,7 @@ export default function MatchmakerPage() {
           <div className="lg:col-span-7 bg-surface-container-lowest p-6 md:p-16 rounded-2xl md:rounded-xl shadow-xl border border-outline-variant/10">
             <h2 className="noto-serif text-2xl md:text-3xl font-bold text-primary mb-8 md:mb-12">{steps[currentStep - 1].title}</h2>
             
-            <form className="space-y-10 md:space-y-16">
+            <form className="space-y-10 md:space-y-16" onSubmit={(e) => e.preventDefault()}>
               {currentStep === 1 && (
                 <div className="space-y-6">
                   <label className="manrope text-[10px] md:text-xs font-bold uppercase tracking-widest text-secondary">Golfing Intensity</label>
@@ -129,7 +180,14 @@ export default function MatchmakerPage() {
                   </div>
                   <div className="space-y-4">
                     <label className="manrope text-[10px] font-bold uppercase tracking-widest text-secondary">Secure Your Private Report</label>
-                    <input type="email" placeholder="Enter your email" className="w-full bg-transparent border-b border-outline-variant/40 focus:border-secondary focus:ring-0 py-3 font-body outline-none" />
+                    <input 
+                      type="email" 
+                      required
+                      value={selections.email}
+                      onChange={(e) => setSelections({...selections, email: e.target.value})}
+                      placeholder="Enter your email" 
+                      className="w-full bg-transparent border-b border-outline-variant/40 focus:border-secondary focus:ring-0 py-3 font-body outline-none text-primary" 
+                    />
                   </div>
                 </div>
               )}
@@ -149,16 +207,17 @@ export default function MatchmakerPage() {
                 
                 <button 
                   type="button" 
-                  onClick={() => currentStep < 3 ? setCurrentStep(prev => prev + 1) : null}
-                  className="w-full md:w-auto bg-primary text-white px-10 py-4 rounded-xl font-bold manrope hover:scale-[0.98] transition-transform shadow-xl order-1 md:order-2"
+                  disabled={isSubmitting}
+                  onClick={handleNext}
+                  className="w-full md:w-auto bg-primary text-white px-10 py-4 rounded-xl font-bold manrope hover:scale-[0.98] transition-transform shadow-xl order-1 md:order-2 disabled:opacity-50"
                 >
-                  {currentStep === 3 ? 'Reveal My Matches' : 'Next Step'}
+                  {isSubmitting ? 'Securing Matches...' : currentStep === 3 ? 'Reveal My Matches' : 'Next Step'}
                 </button>
               </div>
             </form>
           </div>
 
-          {/* Right Sidebar: Expert Tip (Hidden on mobile for focus) */}
+          {/* Right Sidebar */}
           <div className="hidden lg:block lg:col-span-5 space-y-8 sticky top-32">
             <div className="bg-surface-container-low p-8 rounded-2xl">
               <div className="flex items-center gap-4 mb-6">
