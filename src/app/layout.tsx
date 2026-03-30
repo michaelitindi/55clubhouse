@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Serif, Manrope } from "next/font/google";
 import "./globals.css";
+import BottomNav from "@/components/layout/BottomNav";
 
 const notoSerif = Noto_Serif({
   variable: "--font-noto-serif",
@@ -35,7 +36,12 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-background text-on-surface">
+        <div className="flex-1 pb-24 md:pb-0">
+          {children}
+        </div>
+        <BottomNav />
+      </body>
     </html>
   );
 }

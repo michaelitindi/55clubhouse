@@ -27,7 +27,7 @@ const allCommunities = [
     priceLabel: "$3.4M - $12M",
     rating: 4.8,
     architecture: "Desert",
-    image: "https://images.unsplash.com/photo-1531415080293-233a33d0ef18?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=2070&auto=format&fit=crop",
     tags: ["Desert Oasis", "Tom Fazio Design"],
   },
   {
@@ -90,16 +90,44 @@ export default function DiscoverPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-28 pb-20 px-6 md:px-12 max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-12">
-        {/* Sidebar Filters */}
-        <aside className="w-full md:w-72 flex-shrink-0">
+      <main className="pt-24 md:pt-28 pb-20 px-4 md:px-12 max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12">
+        {/* Mobile Filters (Horizontal Chips) */}
+        <div className="md:hidden flex flex-col gap-4 sticky top-20 bg-background/95 backdrop-blur-md z-40 py-4 -mx-4 px-4 border-b border-outline-variant/10">
+          <div className="flex overflow-x-auto gap-2 no-scrollbar pb-2">
+            {regions.map((region) => (
+              <button 
+                key={region}
+                onClick={() => toggleRegion(region)}
+                className={`flex-shrink-0 px-4 py-2 rounded-full border text-[11px] font-bold uppercase tracking-widest transition-all ${
+                  selectedRegions.includes(region) 
+                    ? 'bg-primary border-primary text-white' 
+                    : 'bg-white border-outline-variant/30 text-on-surface-variant'
+                }`}
+              >
+                {region}
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="manrope text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+              {filteredCommunities.length} Estates Found
+            </span>
+            {(selectedRegions.length > 0 || selectedArchitectures.length > 0) && (
+              <button onClick={() => { setSelectedRegions([]); setSelectedArchitectures([]); }} className="text-[10px] font-bold text-secondary uppercase underline">
+                Clear
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Sidebar Filters (Desktop) */}
+        <aside className="hidden md:block w-72 flex-shrink-0">
           <div className="sticky top-32 space-y-10">
             <div>
               <h2 className="font-headline text-2xl -tracking-tight text-primary mb-6">Refine Search</h2>
               <p className="manrope text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-60 mb-8">Selected Criteria</p>
             </div>
 
-            {/* Region Filter */}
             <div className="space-y-4">
               <label className="manrope text-sm font-bold text-on-surface">Region</label>
               <div className="space-y-2">
@@ -119,7 +147,6 @@ export default function DiscoverPage() {
               </div>
             </div>
 
-            {/* Architecture Style */}
             <div className="space-y-4">
               <label className="manrope text-sm font-bold text-on-surface">Course Architecture</label>
               <div className="flex flex-wrap gap-2">
@@ -138,21 +165,12 @@ export default function DiscoverPage() {
                 ))}
               </div>
             </div>
-
-            {(selectedRegions.length > 0 || selectedArchitectures.length > 0) && (
-              <button 
-                onClick={() => { setSelectedRegions([]); setSelectedArchitectures([]); }}
-                className="text-xs font-bold text-secondary hover:underline uppercase tracking-widest"
-              >
-                Clear all filters
-              </button>
-            )}
           </div>
         </aside>
 
         {/* Content Area */}
         <section className="flex-1">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+          <div className="hidden md:flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
             <div>
               <h1 className="noto-serif text-4xl font-bold text-primary mb-2">Heritage Communities</h1>
               <p className="manrope text-on-surface-variant">Showing {filteredCommunities.length} elite estates</p>
@@ -171,33 +189,33 @@ export default function DiscoverPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 md:gap-y-12">
             {filteredCommunities.map((community) => (
-              <Link key={community.slug} href={`/estates/${community.slug}`} className="group cursor-pointer">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-sm">
+              <Link key={community.slug} href={`/estates/${community.slug}`} className="group cursor-pointer block">
+                <div className="relative aspect-[16/10] md:aspect-[4/3] rounded-2xl overflow-hidden mb-4 md:mb-6 shadow-sm">
                   <img 
                     src={community.image} 
                     alt={community.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                   />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    {community.tags.map(tag => (
-                      <span key={tag} className="bg-primary/90 text-white manrope text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full backdrop-blur-sm">
+                  <div className="absolute top-3 left-3 md:top-4 md:left-4 flex gap-2">
+                    {community.tags.slice(0, 1).map(tag => (
+                      <span key={tag} className="bg-primary/90 text-white manrope text-[8px] md:text-[10px] uppercase font-bold tracking-widest px-2 py-1 md:px-3 md:py-1.5 rounded-full backdrop-blur-sm">
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div className="flex justify-between items-start">
+                <div className="flex justify-between items-start px-1">
                   <div>
-                    <h3 className="noto-serif text-2xl font-bold text-primary mb-1 group-hover:text-secondary transition-colors">{community.name}</h3>
-                    <p className="manrope text-sm text-on-surface-variant">{community.location}</p>
+                    <h3 className="noto-serif text-lg md:text-2xl font-bold text-primary mb-0.5 md:mb-1 group-hover:text-secondary transition-colors">{community.name}</h3>
+                    <p className="manrope text-[11px] md:text-sm text-on-surface-variant">{community.location}</p>
                   </div>
                   <div className="text-right">
-                    <p className="noto-serif text-lg font-bold text-secondary">{community.priceLabel}</p>
-                    <div className="flex items-center justify-end gap-1 mt-1">
-                      <span className="material-symbols-outlined text-secondary text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                      <span className="manrope text-xs font-bold text-primary">{community.rating}</span>
+                    <p className="noto-serif text-sm md:text-lg font-bold text-secondary">{community.priceLabel}</p>
+                    <div className="flex items-center justify-end gap-1 mt-0.5 md:mt-1">
+                      <span className="material-symbols-outlined text-secondary text-[14px] md:text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                      <span className="manrope text-[10px] md:text-xs font-bold text-primary">{community.rating}</span>
                     </div>
                   </div>
                 </div>
@@ -207,12 +225,12 @@ export default function DiscoverPage() {
 
           {filteredCommunities.length === 0 && (
             <div className="py-24 text-center">
-              <h3 className="noto-serif text-2xl text-primary mb-4">No communities match your criteria.</h3>
+              <h3 className="noto-serif text-2xl text-primary mb-4 px-6">No estates match your selected criteria.</h3>
               <button 
                 onClick={() => { setSelectedRegions([]); setSelectedArchitectures([]); }}
-                className="text-secondary font-bold hover:underline"
+                className="text-secondary font-bold hover:underline underline-offset-4"
               >
-                Clear all filters and start again
+                Clear all filters
               </button>
             </div>
           )}
