@@ -3,8 +3,13 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
+import { useState } from "react";
+import VirtualTourModal from "@/components/shared/VirtualTourModal";
 
 export default function CommunityDetailPage() {
+  const [isTourOpen, setIsTourOpen] = useState(false);
+  const [tourUrl, setTourUrl] = useState("https://my.matterport.com/show/?m=aSAt7ncSndS"); // Example Matterport URL
+
   const handleFeatureSoon = (feature: string) => {
     alert(`${feature} is currently being curated for our members. Please check back soon.`);
   };
@@ -30,11 +35,11 @@ export default function CommunityDetailPage() {
                 <h1 className="noto-serif text-3xl md:text-6xl text-white font-bold -tracking-tight leading-tight">Whispering Pines Estates</h1>
               </div>
               <button 
-                onClick={() => handleFeatureSoon("Virtual Tour")}
-                className="absolute top-6 right-6 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-white/30 transition-all border border-white/20"
+                onClick={() => setIsTourOpen(true)}
+                className="absolute top-6 right-6 bg-white/90 backdrop-blur-md text-primary px-5 py-2.5 rounded-full flex items-center gap-2 hover:bg-white transition-all shadow-xl border border-white/50 z-10 scale-90 md:scale-100"
               >
                 <span className="material-symbols-outlined text-sm">view_in_ar</span>
-                <span className="manrope text-xs font-bold uppercase tracking-wider">Virtual Tour</span>
+                <span className="manrope text-[10px] md:text-xs font-bold uppercase tracking-wider">Virtual Tour</span>
               </button>
             </div>
             <div className="hidden md:flex flex-col w-1/3 gap-4 h-full">
@@ -176,6 +181,13 @@ export default function CommunityDetailPage() {
           </aside>
         </div>
       </main>
+      
+      <VirtualTourModal 
+        isOpen={isTourOpen} 
+        onClose={() => setIsTourOpen(false)} 
+        tourUrl={tourUrl} 
+      />
+      
       <Footer />
     </>
   );

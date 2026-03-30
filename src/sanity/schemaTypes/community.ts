@@ -69,5 +69,11 @@ export const communityType = defineType({
       type: 'boolean',
       initialValue: false,
     }),
+    defineField({
+      name: 'virtualTourUrl',
+      title: 'Virtual Tour URL',
+      type: 'url',
+      description: 'Link to a Matterport 3D tour, YouTube video, or drone footage.',
+    }),
   ],
 });
